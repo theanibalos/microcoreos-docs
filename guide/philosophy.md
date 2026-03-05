@@ -2,12 +2,21 @@
 
 MicroCoreOS is not just another framework; it's a paradigm shift in how we build applications in the age of AI.
 
-## The Problem: Context Bloat
+## The Problems We're Solving
 
-Traditional architectures (Clean, Hexagonal, N-Layer) were designed for human brain constraints. They use multiple layers to enforce separation of concerns, which results in:
-- **6-8 files** for a single CRUD endpoint.
-- **High cognitive load** for both humans and AI.
-- **Context Noise**: AI assistants spend tokens reading boilerplate instead of logic.
+Traditional architectures accumulate problems over time that no amount of discipline or documentation can fully prevent. MicroCoreOS was designed to eliminate them at the structural level:
+
+- **Invisible coupling** — a change in one module silently breaks another.
+- **Architectural decay** — shortcuts taken under time pressure erode design over months.
+- **Merge conflicts** — shared central files create constant friction in growing teams.
+- **Fragmented AI context** — 5–6 files needed for a single feature means AI makes mistakes.
+- **Cascading failures** — one broken dependency takes down the whole system.
+- **Costly infrastructure changes** — swapping a database requires touching all business logic.
+- **Silent async errors** — background jobs fail without leaving a trace.
+- **Slow onboarding** — new developers need weeks to understand unwritten conventions.
+- **Uncontrolled sync/async mixing** — event loop bugs are non-deterministic and hard to find.
+
+→ See [Problems It Solves](/guide/problems) for a deep dive into each.
 
 ## The Solution: Atomic Microkernel
 
@@ -29,7 +38,7 @@ Tools are pure infrastructure. They are:
 ### 🤖 AI-Native Design
 The system is built to be "read" by AI agents.
 - **AI_CONTEXT.md**: A live manifest generated on boot that tells the AI exactly what tools are available and how to call them.
-- **Zero Hallucination**: By reducing the number of files needed to implement a feature, we reduce the surface area for AI errors.
+- **Fewer AI errors**: By reducing the number of files needed to implement a feature, the surface area for incorrect assumptions shrinks significantly.
 
 ## Core Tenets
 

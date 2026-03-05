@@ -1,0 +1,16 @@
+- **Linktree** — el clásico, simple, muestra la velocidad base
+- **Sistema de auth completo** — JWT, registro, login, hash de passwords, un solo dominio
+- **Multi-base de datos** — analytics en una DB, usuarios en otra, mismo sistema
+- **Webhook receiver** — recibe eventos externos, los procesa en background, muestra el EventBus con causalidad
+- **Sistema de notificaciones** — email + push, el plugin de notificación no sabe qué canal usa, muestra Tools intercambiables
+- **Rate limiter** — como Tool, ningún plugin lo implementa, todos lo usan sin saberlo
+- **API con roles y permisos** — admin, user, moderador, todo en plugins atómicos
+- **Job scheduler** — tareas recurrentes, muestra cron como Tool
+- **Feature flags** — activar y desactivar plugins en runtime sin reiniciar
+- **Migración en vivo** — empezás con SQLite, en el video cambiás a PostgreSQL, cero plugins tocados
+-  Twitter/X clone simple — posts y likes
+- Acortador de URLs con contador de clicks
+- Lista de espera con captura de emails
+- Poll/Votaciones en tiempo real
+- Tablero Kanban
+- Pastebin

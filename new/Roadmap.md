@@ -1,0 +1,9 @@
+- GitHub template repository — para que alguien pueda empezar con un click
+- Linter de aislamiento de dominios — detecta imports entre dominios en CI
+- Linter de firmas de eventos — emisores y subscribers con contratos compatibles
+- Tools oficiales como paquetes separados — `microcoreos-postgres`, `microcoreos-redis`, `microcoreos-auth`
+- Core como paquete pip — `uv add microcoreos`
+- Distributed tracing en EventBus wrapper
+- Versionado de eventos
+- WASM para soporte políglota
+- CLI profesional con src-layout cuando llegue a PyPI

@@ -45,6 +45,28 @@ Sharded in-memory key-value store for shared volatility.
 Validated environment variable access for Plugins.
 - `get(key)`, `require(*keys)`.
 
+## 🔍 System Tools
+
+### `registry`
+Runtime introspection and discovery of the system's full architecture.
+
+- **`get_system_dump()`**: Full inventory of active Tools, Domains, and Plugins.
+- **`get_domain_metadata()`**: Detailed analysis of models and schemas per domain.
+
+### `context_manager`
+Automatically generates and updates `AI_CONTEXT.md` on every boot.
+
+- Reads the system registry after initialization.
+- Exports active tools (with health status and method signatures) and domain models to `AI_CONTEXT.md`.
+- Requires no configuration — runs automatically.
+
+### `chaos`
+Chaos engineering tool for verifying kernel fault tolerance.
+
+- Intentionally fails during boot when `CHAOS_ENABLED=true` is set in the environment.
+- Used to verify that the ToolProxy and graceful degradation mechanisms work correctly.
+- Exposes no capabilities to plugins.
+
 ---
 
 > [!TIP]

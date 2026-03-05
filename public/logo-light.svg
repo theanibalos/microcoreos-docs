@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 32" width="96" height="32">
+  <rect x="0" y="5" width="3" height="22" rx="1.5" fill="#646cff"/>
+  <text x="11" y="24" font-family="ui-monospace, 'Cascadia Code', 'SF Mono', monospace" font-size="21" font-weight="700" letter-spacing="-0.5">
+    <tspan fill="#646cff">μ</tspan><tspan fill="#1a1a1a">COS</tspan>
+  </text>
+</svg>

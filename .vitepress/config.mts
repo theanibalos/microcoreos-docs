@@ -5,7 +5,7 @@ export default defineConfig({
   title: "MicroCoreOS",
   description: "Atomic Microkernel Architecture optimized for AI-Driven Development",
   themeConfig: {
-    logo: '/logo.png',
+    logo: { light: '/logo-light.svg', dark: '/logo-dark.svg' },
     nav: [
       { text: 'Guide', link: '/guide/philosophy' },
       { text: 'Reference', link: '/reference/tools' },
@@ -19,6 +19,9 @@ export default defineConfig({
           { text: 'Philosophy & Principles', link: '/guide/philosophy' },
           { text: 'Quick Start', link: '/guide/quick-start' },
           { text: 'Lifecycle & DI', link: '/guide/lifecycle' },
+          { text: 'Problems It Solves', link: '/guide/problems' },
+          { text: 'FAQ', link: '/guide/faq' },
+          { text: 'Roadmap', link: '/guide/roadmap' },
         ]
       },
       {
@@ -34,6 +37,7 @@ export default defineConfig({
         items: [
           { text: 'Tools Inventory', link: '/reference/tools' },
           { text: 'AI Native Design', link: '/reference/ai-native' },
+          { text: 'Comparison', link: '/reference/comparison' },
         ]
       }
     ],

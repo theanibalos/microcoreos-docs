@@ -13,12 +13,12 @@ AI agents often struggle with:
 ### 🤖 Live AI Manifest (`AI_CONTEXT.md`)
 The system includes a `context_manager` tool that auto-generates a system-wide manifest every time the kernel boots.
 
-- **Zero Guessing**: The manifest contains the exact method signatures, health status, and purpose of every available Tool.
+- **Exact signatures**: The manifest contains the exact method signatures, health status, and purpose of every available Tool — no need to guess or infer.
 - **Up-to-Date**: As you add new tools, the manifest updates itself.
 - **Instructional**: It includes brief usage examples for each capability.
 
 ### 🧩 Atomic Files (1 File = 1 Feature)
-By keeping the schema, registration, and logic in a single file, the "knowledge footprint" of a feature is minimized. An AI can read one file and have 100% of the context needed to modify that feature.
+By keeping the schema, registration, and logic in a single file, the knowledge footprint of a feature is minimal. An AI reading one plugin file has everything needed to understand and modify that feature — no jumping between layers.
 
 ### ⚡ Lowest Token Consumption
 We have measured the token cost of common tasks. MicroCoreOS consistently requires **3x to 5x fewer tokens** to implement the same feature compared to traditional N-Layer architectures.
