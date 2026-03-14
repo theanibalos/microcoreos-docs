@@ -3,7 +3,9 @@
 MicroCoreOS is engineered specifically to maximize the productivity of AI coding assistants like Claude, Cursor, and GitHub Copilot.
 
 ## The Problem with Traditional Codebases
+
 AI agents often struggle with:
+
 - **Context Saturation**: Reading too many files just to understand how to add one field.
 - **Hallucinations**: Guessing method signatures of internal tools.
 - **Boilerplate**: Getting lost in the ceremony of DI configuration and routing.
@@ -11,6 +13,7 @@ AI agents often struggle with:
 ## The MicroCoreOS Solution
 
 ### 🤖 Live AI Manifest (`AI_CONTEXT.md`)
+
 The system includes a `context_manager` tool that auto-generates a system-wide manifest every time the kernel boots.
 
 - **Exact signatures**: The manifest contains the exact method signatures, health status, and purpose of every available Tool — no need to guess or infer.
@@ -18,16 +21,8 @@ The system includes a `context_manager` tool that auto-generates a system-wide m
 - **Instructional**: It includes brief usage examples for each capability.
 
 ### 🧩 Atomic Files (1 File = 1 Feature)
+
 By keeping the schema, registration, and logic in a single file, the knowledge footprint of a feature is minimal. An AI reading one plugin file has everything needed to understand and modify that feature — no jumping between layers.
-
-### ⚡ Lowest Token Consumption
-We have measured the token cost of common tasks. MicroCoreOS consistently requires **3x to 5x fewer tokens** to implement the same feature compared to traditional N-Layer architectures.
-
-| Task | Trad. Tokens | MicroCoreOS Tokens |
-|---|---|---|
-| Add CRUD Endpoint | ~4,000 | ~1,000 |
-| Add Background Task | ~2,500 | ~600 |
-| Mocking a Tool | ~1,500 | ~300 |
 
 ## How to use it with AI Agents
 

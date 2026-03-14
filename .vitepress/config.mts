@@ -27,7 +27,8 @@ export default defineConfig({
       {
         text: 'Development',
         items: [
-          { text: 'Creating Plugins', link: '/development/creating-plugins' },
+          { text: 'First Plugin (Tutorial)', link: '/development/first-plugin' },
+          { text: 'Plugin Patterns (Reference)', link: '/development/creating-plugins' },
           { text: 'Creating Tools', link: '/development/creating-tools' },
           { text: 'Testing', link: '/development/testing' },
         ]
@@ -36,6 +37,7 @@ export default defineConfig({
         text: 'Reference',
         items: [
           { text: 'Tools Inventory', link: '/reference/tools' },
+          { text: 'Observability', link: '/reference/observability' },
           { text: 'AI Native Design', link: '/reference/ai-native' },
           { text: 'Comparison', link: '/reference/comparison' },
         ]
