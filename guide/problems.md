@@ -8,9 +8,9 @@ MicroCoreOS was designed around 9 concrete problems that plague teams building p
 
 In layered frameworks, modules import each other directly. Over time this creates an invisible web: change a method in `Users`, unknowingly break `Billing`, which breaks `Reports`. In large codebases this becomes real fear — developers stop refactoring bad code because touching anything might break something unrelated.
 
-**How MicroCoreOS solves it:** Domains cannot import each other — it's a structural constraint, not a convention. Cross-domain communication happens exclusively through the EventBus with explicit contracts.
+**How MicroCoreOS solves it:** The architecture strongly discourages cross-domain imports. Communication happens through the EventBus with explicit contracts, making any coupling visible and easy to spot in review.
 
-> The blast radius of any change is always one file.
+> The architecture aims to keep the blast radius of any change to a single file.
 
 ---
 
@@ -20,7 +20,7 @@ Every project starts with good intentions. Six months in, a developer under pres
 
 **How MicroCoreOS solves it:** The rules are explicit conventions with a clear structural rationale — not arbitrary style preferences. A Plugin only receives Tools via its constructor. Domains don't import each other. The pattern is consistent enough that violations are obvious in code review, and a CI linter to enforce them automatically is on the roadmap.
 
-> The design makes shortcuts the path of most resistance. Decay requires deliberate effort to introduce.
+> The architecture resists degradation because conventions are explicit and easy to enforce.
 
 ---
 
@@ -30,7 +30,7 @@ In Django or Spring Boot, there are files everyone touches: `models.py`, `urls.p
 
 **How MicroCoreOS solves it:** Each feature is its own file. One developer works on `products_plugin.py`, another on `users_plugin.py`. There are no shared files to edit.
 
-> In a team of 50 developers, merge conflicts are statistically impossible. Each PR touches exactly one file.
+> Merge conflicts are rare because each feature lives in its own file, radically reducing the surface area for shared edits.
 
 ---
 
@@ -40,7 +40,7 @@ When an AI agent needs to add an endpoint in Django, it reads `models.py` + `ser
 
 **How MicroCoreOS solves it:** The kernel auto-generates `AI_CONTEXT.md` — a live manifest with every tool's exact method signatures. The AI reads that file plus the single plugin file. The contract is so explicit there are no design decisions to make, only logic to fill in.
 
-> AI generates correct code on the first attempt. This is structurally impossible in layered architectures.
+> AI produces cleaner code because the context is smaller and the pattern is explicit, significantly reducing the back-and-forth compared to layered architectures.
 
 ---
 
@@ -58,7 +58,7 @@ When a dependency fails — the database goes down, the log server times out —
 
 In Django or NestJS, infrastructure and business logic are entangled. Adding Redis for caching or switching to a different database means touching every module that accesses it — models, serializers, connection management, tests. It's a multi-week project before a single line of business logic changes.
 
-**How MicroCoreOS solves it:** Tools are completely separate from Plugins. A Plugin declares it needs `"db"` — just a name. The concrete implementation (SQLite, PostgreSQL) is registered separately. Switching between SQL databases means swapping the Tool; plugins are untouched because both use the same `$1, $2` placeholder syntax.
+**How MicroCoreOS solves it:** Tools are separate from Plugins. A Plugin declares it needs `"db"`. Swapping between compatible SQL databases (like SQLite to PostgreSQL) requires zero plugin changes because both use the same `$1, $2` placeholder syntax.
 
 Switching to a fundamentally different system (e.g. a NoSQL store) does require updating each plugin's queries — but since each feature is a single isolated file, an AI can regenerate them in minutes. The cost of infrastructure migrations drops from weeks of archaeology to a fast AI-assisted rewrite.
 
@@ -82,7 +82,7 @@ Joining a project with a layered architecture means learning the full structure 
 
 **How MicroCoreOS solves it:** Read `AI_CONTEXT.md` (5 minutes) and one existing plugin (10 minutes). The pattern is so explicit and consistent that the system teaches itself. There are no implicit conventions to learn because the rules are in the code.
 
-> A new developer can make their first useful commit on day one.
+> A new developer can understand the pattern in minutes and begin contributing on their first day.
 
 ---
 
@@ -100,12 +100,12 @@ Most systems mix synchronous code (legacy libraries, CPU-bound work) with async 
 
 | Problem | Mechanism |
 |---|---|
-| Invisible coupling | Domain isolation + EventBus contracts |
+| Invisible coupling | Domain isolation + EventBus contracts (discourages direct imports) |
 | Architectural decay | Explicit structural conventions + CI linter (roadmap) |
-| Merge conflicts | 1 file = 1 feature, no shared files |
+| Merge conflicts | 1 file = 1 feature, dramatically reduced shared files |
 | Fragmented AI context | Auto-generated `AI_CONTEXT.md` |
 | Runtime cascading failures | ToolProxy automatic fault containment |
-| Costly infrastructure changes | Swappable Tools, isolated plugin files |
+| Costly infrastructure changes | Swappable Tools for compatible backends |
 | Silent async errors | Watchdog + causality engine |
 | Slow onboarding | Explicit pattern + self-documenting system |
 | Sync/async chaos | Kernel auto-threads sync methods |

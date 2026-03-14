@@ -383,15 +383,15 @@ async def shutdown(self):
 
 Each plugin file handles exactly one endpoint or one event subscription. If a feature requires both an endpoint and event handling, split them into two plugin files in the same domain.
 
-### 2. No cross-domain imports
-
-Never `from domains.users.models import UserEntity` inside a plugin in another domain. Use `event_bus.request()` for cross-domain data needs.
-
+### 2. Avoid cross-domain imports
+ 
+The architecture depends on keeping domains isolated. We strongly discourage importing from other domains (e.g., `from domains.users.models import UserEntity`). Such imports are easy to spot in review and undermine the benefits of the architecture. Instead, use `event_bus.request()` for cross-domain data needs.
+ 
 ```python
-# Wrong
+# Discouraged
 from domains.users.models.user_entity import UserEntity
-
-# Correct
+ 
+# Recommended
 user = await self.event_bus.request("users.get_user", {"user_id": user_id})
 ```
 

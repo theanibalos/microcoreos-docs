@@ -4,7 +4,7 @@ MicroCoreOS is not just another framework; it's a paradigm shift in how we build
 
 ## The Problems We're Solving
 
-Traditional architectures accumulate problems over time that no amount of discipline or documentation can fully prevent. MicroCoreOS was designed to eliminate them at the structural level:
+Traditional architectures accumulate problems over time that no amount of discipline or documentation can fully prevent. MicroCoreOS was designed to minimize them at the structural level:
 
 - **Invisible coupling** — a change in one module silently breaks another.
 - **Architectural decay** — shortcuts taken under time pressure erode design over months.
@@ -33,7 +33,7 @@ By keeping everything in one file, we minimize "Context Saturation". An AI only 
 ### ⚛️ Decoupled Tools
 Tools are pure infrastructure. They are:
 - **Stateless**: They provide capabilities (DB, HTTP, Logic) but don't hold domain state.
-- **Swappable**: You can swap the SQLite `db` tool for a PostgreSQL one without changing a single line of plugin code.
+- **Swappable**: You can swap compatible infrastructure (like swapping the SQLite `db` tool for a PostgreSQL one) without changing plugin code.
 
 ### 🤖 AI-Native Design
 The system is built to be "read" by AI agents.

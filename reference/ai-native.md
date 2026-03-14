@@ -30,4 +30,4 @@ When prompting an AI to work on MicroCoreOS, simply point it to the manifest:
 
 > "Read `AI_CONTEXT.md` to see available tools. Create a new plugin in the `orders` domain that..."
 
-The AI will correctly identify the `db` tool, use the `$1, $2` placeholder syntax, and register the endpoint via `http` without you ever having to explain how the framework works.
+The AI can typically identify the `db` tool, use the `$1, $2` placeholder syntax, and register the endpoint via `http` with minimal manual instruction, as the pattern is explicit and documented in the manifest.

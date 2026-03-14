@@ -16,7 +16,7 @@ If you switch databases, an AI can rewrite the affected plugins in seconds. The 
 
 **Systems with microsecond latency requirements** — real-time games, high-frequency trading, or anything where the overhead of an event loop, async dispatch, and a Python runtime is a hard constraint. MicroCoreOS is fast, but it's not a low-latency engine.
 
-**Everything else is a good fit**, including solo developers. A single developer with AI agents is arguably the ideal scenario — you put multiple agents to work in parallel, each in its own plugin file, with no coordination overhead.
+**MicroCoreOS is a strong fit for most applications**, including solo developers. A single developer with AI agents can be highly effective — you can put multiple agents to work in parallel, each in its own plugin file, with significantly reduced coordination overhead.
 
 **Legacy systems** are not a blocker — they're an opportunity. The approach is to migrate feature by feature: keep the existing system running and start extracting functionality into plugins one story at a time. You don't need to rewrite everything to start benefiting from the architecture.
 
@@ -42,7 +42,7 @@ If your team isn't losing context between sessions, isn't stepping on each other
 
 The difference shows up at scale and with AI-assisted development. When you ask an AI to add a feature in a standard FastAPI project, it needs to read the router, the service, the schema, the model, and possibly the dependency injection setup. It makes assumptions about conventions. It puts things in the wrong place. You correct it.
 
-In MicroCoreOS, the AI reads `AI_CONTEXT.md` and the plugin file. The contract is explicit enough that there are no placement decisions to make — only logic to write. Features that would take minutes of back-and-forth take one prompt.
+In MicroCoreOS, the AI reads `AI_CONTEXT.md` and the plugin file. The contract is explicit enough that there are no placement decisions to make — only logic to write. This significantly reduces the back-and-forth required to implement new features.
 
 ---
 

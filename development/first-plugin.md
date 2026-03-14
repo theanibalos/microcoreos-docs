@@ -362,8 +362,8 @@ This plugin has no HTTP endpoint. It only subscribes to an event. That is a vali
 The callback receives only `data: dict`. There is no `event_name` second argument.
 :::
 
-::: info No cross-domain imports
-`NoteCreatedHandlerPlugin` does not import anything from `domains/notes/`. The `note.created` string is the only contract between the two domains. You can move, rename, or rewrite either domain independently.
+::: info Avoid cross-domain imports
+`NoteCreatedHandlerPlugin` avoids importing from `domains/notes/`. The `note.created` string is the primary bridge between the two domains. This allows you to modify or rewrite either domain independently without hidden side effects.
 :::
 
 Restart the server. Create a note via `POST /notes`. You will see the log line from `NoteCreatedHandlerPlugin` in the terminal immediately after the insert.
