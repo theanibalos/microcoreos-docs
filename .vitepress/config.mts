@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "MicroCoreOS",
   description: "Atomic Microkernel Architecture optimized for AI-Driven Development",
+  ignoreDeadLinks: 'localhostLinks',
   themeConfig: {
     logo: { light: '/logo-light.svg', dark: '/logo-dark.svg' },
     nav: [
@@ -19,6 +20,7 @@ export default defineConfig({
           { text: 'Philosophy & Principles', link: '/guide/philosophy' },
           { text: 'Quick Start', link: '/guide/quick-start' },
           { text: 'Lifecycle & DI', link: '/guide/lifecycle' },
+          { text: 'Elastic Deployment', link: '/guide/elastic-deployment' },
           { text: 'Problems It Solves', link: '/guide/problems' },
           { text: 'FAQ', link: '/guide/faq' },
           { text: 'Roadmap', link: '/guide/roadmap' },
@@ -31,12 +33,16 @@ export default defineConfig({
           { text: 'Plugin Patterns (Reference)', link: '/development/creating-plugins' },
           { text: 'Creating Tools', link: '/development/creating-tools' },
           { text: 'Testing', link: '/development/testing' },
+          { text: 'Parallel Development', link: '/development/parallel-development' },
         ]
       },
       {
         text: 'Reference',
         items: [
           { text: 'Tools Inventory', link: '/reference/tools' },
+          { text: 'Event Bus', link: '/reference/event-bus' },
+          { text: 'HTTP Server', link: '/reference/http-server' },
+          { text: 'Kernel Internals', link: '/reference/kernel-internals' },
           { text: 'Observability', link: '/reference/observability' },
           { text: 'AI Native Design', link: '/reference/ai-native' },
           { text: 'Comparison', link: '/reference/comparison' },
