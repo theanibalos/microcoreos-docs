@@ -30,8 +30,8 @@ features:
   - title: Hybrid Async Engine
     details: Automatically offloads blocking sync code to threads. Focus on logic, not event loop management.
     icon: ⚡
-  - title: Graceful Degradation
-    details: ToolProxy intercepts all infrastructure failures. If logging goes down, payments keep running. Resilience is automatic.
+  - title: Fault Isolation
+    details: ToolProxy tracks every infrastructure call. Failing tools are marked DEAD, plugins fail individually, the process never dies — and no error is ever silently retried.
     icon: 🛡️
   - title: Swappable Infrastructure
     details: Plugins declare what they need by name. Switch from SQLite to PostgreSQL by changing one Tool. Zero plugin changes required.
