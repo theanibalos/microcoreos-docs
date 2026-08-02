@@ -877,5 +877,24 @@ No plugin API. Never enable in production.
 
 ---
 
+---
+
+## 💖 Built on the Shoulders of Open-Source Giants
+
+MicroCoreOS provides the **Atomic Microkernel Architecture, DI container, orchestration engine, and 1-file decoupling**. Every swappable Tool is a contract wrapper powered by world-class open-source projects created by amazing maintainers:
+
+- **FastAPI, Starlette & Uvicorn** — Powers `HttpServerTool` (`http`)
+- **Pydantic** — Powers request/response schema validation
+- **aiosqlite & asyncpg** — Powers `SQLiteTool` and `PostgreSQLTool` (`db`)
+- **redis-py** — Powers `RedisStateTool` and Redis Streams event bus driver
+- **aiokafka & aio-pika** — Powers Kafka and RabbitMQ event bus drivers
+- **APScheduler** — Powers `SchedulerTool` (`scheduler`)
+- **PyJWT & bcrypt** — Powers `AuthTool` (`auth`)
+- **OpenTelemetry** — Powers `TelemetryTool` (`telemetry`)
+- **aioboto3** — Powers `S3Tool` (`s3`)
+- **mutmut & Locust** — Powers mutation blindage and the `MicroCoreBench` laboratory
+
+---
+
 > [!TIP]
 > `AI_CONTEXT.md` in the project root is regenerated on every boot and always reflects the current tool method signatures. When in doubt, read it — it is the authoritative live reference.

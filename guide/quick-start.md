@@ -1,65 +1,63 @@
 # Quick Start
 
-This guide takes you from zero to a running MicroCoreOS server with your first custom endpoint. Estimated time: 5 minutes.
+This guide takes you from zero to a running MicroCoreOS application with your first custom endpoint. Estimated time: 2 minutes.
 
-## Prerequisites
+## 🚀 Recommended: Using `uv` (Fastest)
 
-- Python 3.10 or newer
-- [`uv`](https://docs.astral.sh/uv/getting-started/installation/) installed (`pip install uv` or the official installer)
-
-## 1. Clone and Run
+[`uv`](https://docs.astral.sh/uv/) is the recommended, ultra-fast tool for managing Python projects and dependencies in MicroCoreOS.
 
 ```bash
-git clone https://github.com/theanibalos/MicroCoreOS.git
-cd MicroCoreOS
+# 1. Initialize project
+uv init my_app
+cd my_app
+
+# 2. Add microcoreos dependency
+uv add microcoreos
+
+# 3. Scaffold directory structure
+uv run microcoreos new .
+
+# 4. Boot server
 uv run main.py
 ```
 
-`uv` will install all dependencies on the first run, then boot the server. You do not need to create a virtual environment manually.
+---
 
-## 2. What Just Happened
+## 📦 Alternative: Using standard `pip`
 
-Watch the terminal output. You will see something like:
+If you prefer standard `pip` and virtual environments:
 
-```
-[Kernel] Discovering tools...
-[Kernel] Booting tools in parallel...
-[db] Connected to PostgreSQL
-[http] Listening on http://0.0.0.0:5000
-[Kernel] Discovering plugins...
-[Kernel] Booting plugins...
-[Kernel] Boot complete. 12 plugins ready.
-```
+```bash
+# 1. Install microcoreos package
+pip install microcoreos
 
-The Kernel walked every `domains/*/plugins/` folder, found all plugin files, wired up their dependencies by name, and called `on_boot()` on each one — in the right order, automatically. You did not write any of that wiring.
+# 2. Scaffold new project
+microcoreos new my_app
+cd my_app
 
-## 3. Explore the API
-
-Open **http://localhost:5000/docs** in your browser.
-
-This is the live Swagger UI, auto-generated from every endpoint registered by every plugin. As you add plugins, new endpoints appear here instantly after a restart.
-
-## 4. Your First Feature
-
-You will add a greeting endpoint in three steps.
-
-**Step 1.** Create the folder structure:
-
-```
-domains/
-  hello/
-    __init__.py
-    plugins/
-      __init__.py
-      greeting_plugin.py
+# 3. Boot server
+microcoreos run
 ```
 
-The `__init__.py` files can be empty. MicroCoreOS requires them to recognize the folders as Python packages.
+---
 
-**Step 2.** Write the plugin. Paste this into `domains/hello/plugins/greeting_plugin.py`:
+## 🔍 System Inspection & Plan Commands
+
+Run the CLI inspection tools anytime:
+
+```bash
+uv run microcoreos status            # Displays active plan & context manifest freshness
+uv run microcoreos plan validate     # Validates offline plan rules
+```
+
+---
+
+## ✍️ Write Your First Plugin
+
+Add a custom greeting plugin in a single file. Create `domains/hello/plugins/greeting_plugin.py`:
 
 ```python
-from core.base_plugin import BasePlugin
+from microcoreos import BasePlugin
 
 
 class GreetingPlugin(BasePlugin):
@@ -75,13 +73,13 @@ class GreetingPlugin(BasePlugin):
         return {"success": True, "data": "Hello from MicroCoreOS!"}
 ```
 
-**Step 3.** Restart the server:
+Restart the server:
 
 ```bash
 uv run main.py
 ```
 
-Visit **http://localhost:5000/hello** or try it in Swagger. You should see:
+Visit **http://localhost:6060/hello** or inspect **http://localhost:6060/docs** (Swagger UI). You will receive:
 
 ```json
 {
@@ -90,13 +88,12 @@ Visit **http://localhost:5000/hello** or try it in Swagger. You should see:
 }
 ```
 
-::: tip No registration needed
-The Kernel found `GreetingPlugin` by convention — it walked the folder, saw the class, matched `http` and `logger` to the running tools, and called `on_boot()`. You never touched `main.py`.
+::: tip Zero Wiring Needed
+The Kernel discovered `GreetingPlugin` by convention, injected `http` and `logger` by name, and bound the route. You never edited `main.py` or a router file.
 :::
 
 ## Next Steps
 
-The quick start showed the absolute minimum. The full tutorial walks you through CRUD with a database and cross-domain events:
-
 - [First Plugin (Tutorial)](/development/first-plugin) — Hello World → CRUD → Events, step by step.
-- [Plugin Patterns (Reference)](/development/creating-plugins) — auth, SSE, HttpContext, and advanced patterns.
+- [Elastic Deployment](/guide/elastic-deployment) — Swap SQLite for PostgreSQL or Redis Streams with zero plugin changes.
+- [Testing & MicroCoreBench](/development/testing) — Learn how to run unit tests, mutation testing (`mutmut`), and load tests.

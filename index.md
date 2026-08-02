@@ -1,5 +1,4 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
@@ -21,20 +20,19 @@ features:
   - title: 1 File = 1 Feature
     details: Plugins are self-contained. AI assistants can add features by writing just one file. No merge conflicts by design.
     icon: 🧩
-  - title: AI-Native Manifest
-    details: Auto-generates AI_CONTEXT.md with live tool signatures for zero-noise prompting. AI gets it right on the first attempt.
-    icon: 🤖
+  - title: 100% Mutation-Killed Kernel
+    details: Zero survived mutants in core logic (mutmut verified). Zero retries, pure stdlib microkernel.
+    icon: 🛡️
+  - title: MicroCoreBench Resilience
+    details: Integrated laboratory with Locust load testing, Soak memory leak detection (tracemalloc), and Stress-to-Knee breaking point discovery.
+    icon: 🧪
   - title: Atomic Decoupling
     details: No cross-domain imports. Communication happens exclusively via a typed EventBus. Architectural decay is structurally impossible.
     icon: ⚛️
-  - title: Hybrid Async Engine
-    details: Automatically offloads blocking sync code to threads. Focus on logic, not event loop management.
-    icon: ⚡
-  - title: Fault Isolation
-    details: ToolProxy tracks every infrastructure call. Failing tools are marked DEAD, plugins fail individually, the process never dies — and no error is ever silently retried.
-    icon: 🛡️
-  - title: Swappable Infrastructure
-    details: Plugins declare what they need by name. Switch from SQLite to PostgreSQL by changing one Tool. Zero plugin changes required.
+  - title: Zero-Config Elasticity
+    details: Switch from SQLite to PostgreSQL or InProcess to Redis Streams / Kafka / RabbitMQ with zero plugin changes. Verified by parity suites.
     icon: 🔄
+  - title: AI-Native Manifest & Linters
+    details: Auto-generates AI_CONTEXT.md with live tool signatures. Built-in AST linters enforce domain isolation and event contracts in CI.
+    icon: 🤖
 ---
-
